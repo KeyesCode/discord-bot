@@ -4,3 +4,7 @@
 
 /dist
 /dist/*
+
+# Bot runtime files
+logs/
+bot.pid
