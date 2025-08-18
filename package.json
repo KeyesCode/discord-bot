@@ -8,7 +8,7 @@
     "setup": "npm run build && node dist/index.js",
     "start": "npm run build && node dist/runtime.js",
     "dev": "npm run build && node dist/runtime.js",
-    "start:bg": "npm run build && mkdir -p logs && nohup node dist/runtime.js > logs/bot.log 2>&1 &",
+    "start:bg": "npm run build && mkdir -p logs && nohup node dist/runtime.js > logs/bot.log 2>&1 & echo 'Bot started in background'",
     "stop:bg": "pkill -f 'node dist/runtime.js'",
     "logs": "tail -f logs/bot.log",
     "test": "echo \"Error: no test specified\" && exit 1"
