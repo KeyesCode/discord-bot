@@ -80,6 +80,78 @@ GUILD_ID=your_server_id_here
 | `npm start` | Start runtime bot |
 | `npm run dev` | Alias for start |
 
+## 🚀 **24/7 Deployment Options**
+
+### **Option 1: PM2 (Recommended for Production)**
+
+PM2 is a production process manager that keeps your bot running, auto-restarts on crashes, and provides monitoring.
+
+```bash
+# Install PM2 globally
+npm i -g pm2
+
+# Start the bot with PM2
+pm2 start dist/runtime.js --name est-rp-bot
+
+# Save PM2 configuration
+pm2 save
+
+# Enable PM2 to start on system boot
+pm2 startup systemd
+# Follow the printed command to enable on boot
+
+# View logs and status
+pm2 logs est-rp-bot
+pm2 status
+
+# Other useful PM2 commands
+pm2 restart est-rp-bot    # Restart the bot
+pm2 stop est-rp-bot       # Stop the bot
+pm2 delete est-rp-bot     # Remove from PM2
+```
+
+**Advanced PM2 Configuration:**
+If you want more control over PM2 settings, you can create an ecosystem file:
+
+```bash
+# Create ecosystem file
+pm2 ecosystem
+
+# Edit the generated ecosystem.config.js file
+# Then start with:
+pm2 start ecosystem.config.js
+```
+
+### **Option 2: nohup (Simple Background)**
+
+For simple background running without auto-restart:
+
+```bash
+# Start in background
+nohup node dist/runtime.js > logs/bot.log 2>&1 &
+
+# Stop the bot
+pkill -f "node dist/runtime.js"
+
+# View logs
+tail -f logs/bot.log
+```
+
+### **Option 3: Bash Scripts**
+
+Use the included bash scripts:
+
+```bash
+# Make scripts executable
+chmod +x start-bot.sh stop-bot.sh
+
+# Start bot
+./start-bot.sh
+
+# Stop bot
+./stop-bot.sh
+```
+
 ## 🚨 Troubleshooting
 
 ### **"Interaction Failed" Error**
